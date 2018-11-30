@@ -21,7 +21,6 @@ let ProcceedRequest = (req,res) => {
 
     //get the query string
     let queryStringObject = pasedUrl.query;
-    let queryString;
 
     //headers
     let headers = req.headers;
@@ -31,11 +30,11 @@ let ProcceedRequest = (req,res) => {
     let buf = '';
 
     //listen to data emit
-    req.on('data',(data)=>{
+    req.on('data',(data) => {
         buf += decoder.write(data);
     });
     //we are done
-    req.on('end',()=>{
+    req.on('end',() => {
         buf += decoder.end();
 
         //choose the handler
@@ -67,7 +66,6 @@ let ProcceedRequest = (req,res) => {
             //log
             console.log(`method = ${methodName} uri = ${trimmedPath} with this queryString ${JSON.stringify(queryStringObject)},
             payload : ${payLoadString} `);
-
         });
     });
 }
@@ -87,7 +85,7 @@ let handlers = {};
 handlers.hello = (data,callback) => {
 //calback an http status code & payload obj
     switch (data.method.toLowerCase()) {
-        case 'post': //homework task for post
+        case 'post': //homework task only for a post method
             callback(406,{'message':'Welcome man , how are you!?'});
             break;
         case 'get':
