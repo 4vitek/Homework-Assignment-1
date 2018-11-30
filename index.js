@@ -87,7 +87,7 @@ let handlers = {};
 handlers.hello = (data,callback) => {
 //calback an http status code & payload obj
     switch (data.method.toLowerCase()) {
-        case 'post':
+        case 'post': //homework task for post
             callback(406,{'message':'Welcome man , how are you!?'});
             break;
         case 'get':
